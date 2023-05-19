@@ -86,6 +86,36 @@ variable "avtx_service_principal_appid" {
   sensitive = true
 }
 
+variable "use_existing_resource_group" {
+  type        = bool
+  description = "Use existing resource group"
+  default     = false
+}
+
+variable "use_existing_vnet" {
+  type        = bool
+  description = "Use existing vnet"
+  default     = false
+}
+
+variable "subnet_name" {
+  type        = string
+  description = "Name of the existing subnet"
+  default     = null
+}
+  
+variable "resource_group_name" {
+  type        = string
+  description = "Name of the existing resource group"
+  default     = null
+}
+
+variable "vnet_name" {
+  type        = string
+  description = "Name of the existing vnet"
+  default     = null
+}
+
 locals {
   provisionerIP = [replace(data.http.my_ip.response_body,"\n","/32")]
   allowed_ips = length(var.incoming_ssl_cidr) > 0 ? concat(var.incoming_ssl_cidr,local.provisionerIP) : local.provisionerIP

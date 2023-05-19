@@ -34,6 +34,11 @@ module "aviatrix_controller_build" {
   controller_virtual_machine_admin_password = var.controller_virtual_machine_admin_password
   controller_virtual_machine_size           = var.controller_virtual_machine_size
   incoming_ssl_cidr                         = local.allowed_ips
+  use_existing_resource_group               = var.use_existing_resource_group
+  use_existing_vnet                         = var.use_existing_vnet
+  resource_group_name                       = var.resource_group_name
+  vnet_name                                 = var.vnet_name
+  subnet_name                               = var.subnet_name
 }
 
 module "aviatrix_controller_initialize" {
